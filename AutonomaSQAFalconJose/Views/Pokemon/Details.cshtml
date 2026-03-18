@@ -1,0 +1,42 @@
+﻿@model AutonomaSQAFalconJose.Models.DetallesPokemonRespuesta
+
+@{
+    ViewData["Title"] = "Detalle del Pokémon";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-lg border-info rounded-4 overflow-hidden">
+                <div class="card-header bg-info text-white text-center py-3">
+                    <h2 class="text-uppercase fw-bold mb-0">@Model.Name</h2>
+                </div>
+                
+                <div class="text-center p-4" style="background-color: #f8f9fa;">
+                    <img src="@Model.Sprites.FrontDefault" alt="@Model.Name" class="img-fluid" style="width: 250px; image-rendering: pixelated; filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.2));">
+                </div>
+                
+                <div class="card-body px-4 pb-4">
+                    <h5 class="text-muted text-center mb-4">Número de Pokedex: #@Model.Id.ToString("D3")</h5>
+                    
+                    <ul class="list-group list-group-flush fs-5 mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <strong><i class="bi bi-speedometer2"></i> Peso:</strong>
+                            <span class="badge bg-secondary rounded-pill">@(Model.Weight / 10.0) kg</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <strong><i class="bi bi-rulers"></i> Altura:</strong>
+                            <span class="badge bg-secondary rounded-pill">@(Model.Height / 10.0) m</span>
+                        </li>
+                    </ul>
+
+                    <div class="d-grid mt-2">
+                        <a asp-action="Index" class="btn btn-outline-dark btn-lg rounded-pill fw-bold shadow-sm">
+                            Volver al Catálogo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

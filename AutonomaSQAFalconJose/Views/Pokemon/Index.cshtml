@@ -1,0 +1,53 @@
+﻿@model List<AutonomaSQAFalconJose.Models.Pokemon>
+@{
+    ViewData["Title"] = "Catálogo Pokémon";
+}
+
+<div class="container py-4">
+    <div class="row mb-5">
+        <div class="col-12 text-center text-black">
+            <h1 class="display-5 fw-bold mb-2">Sistema de Gestión Pokémon</h1>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var poke in Model)
+            {
+                <div class="col">
+                    <div class="card h-100 border-primary shadow-sm" style="transition: transform 0.2s;">
+                        
+                        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                            <span class="fw-bold">Registro</span>
+                            <span class="badge bg-light text-dark fs-6">N.° @poke.Id.ToString("D3")</span>
+                        </div>
+                        
+                        <div class="text-center p-3" style="background-color: #e9ecef;">
+                            <img src="@poke.FotoUrl" class="img-fluid" alt="Foto de @poke.Nombre" style="height: 130px; image-rendering: pixelated;">
+                        </div>
+                        
+                        <div class="card-body text-center d-flex flex-column">
+                            <h4 class="card-title text-uppercase mb-4 text-primary fw-bold">@poke.Nombre</h4>
+                            
+                            <a asp-controller="Pokemon"
+                                   asp-action="Details"
+                                   asp-route-id="@poke.Id"
+                                   class="btn btn-outline-primary mt-auto rounded-pill fw-bold">
+                                VER INFORMACIÓN
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12">
+                <div class="alert alert-warning text-center fs-5 shadow-sm">
+                    Cargando información del servidor o no se encontraron datos...
+                </div>
+            </div>
+        }
+    </div>
+</div>
